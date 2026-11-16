@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Resources | Analytics Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">✚</div>
+                <div>
+                    <h2>Health<span>Analytics</span></h2>
+                    <small>RESOURCE INTELLIGENCE</small>
+                </div>
+            </div>
+
+            <p class="nav-label">WORKSPACE</p>
+            <nav>
+                <a href="#overview" class="nav-link active">▦ Dashboard</a>
+                <a href="#forecast" class="nav-link">↗ Demand Forecasting</a>
+                <a href="#beds" class="nav-link">▤ Bed Optimization</a>
+                <a href="#fairness" class="nav-link">◎ Fairness Audit</a>
+                <a href="#explainability" class="nav-link">◈ Explainability</a>
+                <a href="#reports" class="nav-link">⇩ Reports</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="status-dot"></div>
+                <span>Research Project · 2023 Data</span>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">HEALTHCARE INTELLIGENCE / OVERVIEW</p>
+                    <h1>Hospital Resources Dashboard</h1>
+                    <p class="subtitle">Explainable and Fairness-Audited Hospital Resources: A Pig Study</p>
+                </div>
+                <div class="top-actions">
+                    <span class="live-label">● ANALYTICS READY</span>
+                    <button id="refreshBtn">↻ Refresh</button>
+                </div>
+            </header>
+
+            <section id="overview">
+                <div class="section-heading">
+                    <div>
+                        <h2>Overview</h2>
+                        <p>Key performance indicators from the hospital dataset</p>
+                    </div>
+                    <span class="period">REPORTING YEAR · 2023</span>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <div class="stat-top"><span>Total Hospitals</span><span>▦</span></div>
+                        <h2 id="hospitalCount">—</h2>
+                        <small>Hospitals in forecast output</small>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-top"><span>Additional Beds</span><span>▤</span></div>
+                        <h2 id="additionalBeds">—</h2>
+                        <small>Estimated capacity requirement</small>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-top"><span>Spare Beds</span><span>＋</span></div>
+                        <h2 id="spareBeds">—</h2>
+                        <small>Estimated spare capacity</small>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-top"><span>Jurisdictions</span><span>◎</span></div>
+                        <h2 id="stateCount">—</h2>
+                        <small>Geographic audit coverage</small>
+                    </article>
+                </div>
+            </section>
+
+            <section id="forecast" class="content-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Demand Forecasting</h2>
+                        <p>Machine learning model performance</p>
+                    </div>
+                </div>
+                <div class="panel">
+                    <canvas id="modelChart"></canvas>
+                </div>
+            </section>
+
+            <section id="beds" class="content-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Bed Optimization</h2>
+                        <p>Hospitals requiring additional bed capacity</p>
+                    </div>
+                </div>
+                <div class="panel">
+                    <canvas id="bedChart"></canvas>
+                </div>
+                <div class="panel table-panel">
+                    <h3>Hospital Capacity Details</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Hospital</th>
+                                    <th>State</th>
+                                    <th>Current Beds</th>
+                                    <th>Forecast Demand</th>
+                                    <th>Additional Beds</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bedTable">
+                                <tr><td colspan="5">Loading results...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="fairness" class="content-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Geographic Fairness Audit</h2>
+                        <p>Comparison of unmet demand across jurisdictions</p>
+                    </div>
+                </div>
+                <div class="panel">
+                    <canvas id="fairnessChart"></canvas>
+                </div>
+                <div class="panel table-panel">
+                    <h3>Fairness Audit Results</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead id="fairnessHead"></thead>
+                            <tbody id="fairnessTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="explainability" class="content-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Explainability</h2>
+                        <p>Understand the factors behind model predictions</p>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h3>Feature Importance</h3>
+                    <canvas id="featureChart"></canvas>
+                </div>
+                <div class="panel table-panel">
+                    <h3>Hospital Forecast Explanations</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead id="explanationHead"></thead>
+                            <tbody id="explanationTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="reports" class="content-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Reports & Downloads</h2>
+                        <p>Project-generated results and visualizations</p>
+                    </div>
+                </div>
+                <div class="report-list" id="reportList"></div>
+            </section>
+
+            <footer>
+                <p>Hospital Resources Research Project · Apache Pig · Python · Machine Learning</p>
+                <p>Historical dataset: 2023 · Research demonstration only</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

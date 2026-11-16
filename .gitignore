@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+pig-0.18.0/
+pig-0.18.0.tar.gz
+pig_*.log
+dataset/raw/
+dataset/hospital_2023.csv
+dataset/hospital_2023.tsv
+
+output/hospital_cleaned/
+*.crc
+output/**/_SUCCESS
